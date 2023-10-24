@@ -1,35 +1,38 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include<stdio.h>
+
 /**
- * main - A program that prints combination of all three digit numbers.
- *
- * Return: Always 0 (Success)
+ * main - Entry Point
+ * Description: Write a program that prints all possible
+ * different combinations of two digits
+ * Return: 0
  */
+
 int main(void)
 {
-	int hundreds;
-	int tens;
-	int ones;
-	int num;
+	int firstDigit = 0, seconDigit;
 
-	for (num = 0; num < 1000; num++)
+	while (firstDigit <= 99)
 	{
-		hundreds = num / 100;
-		tens = (num / 10) % 10;
-		ones = num % 10;
-
-		if (hundreds < tens && tens < ones)
+		seconDigit = firstDigit;
+		while (seconDigit <= 99)
 		{
-			putchar(hundreds + '0');
-			putchar(tens + '0');
-			putchar(ones + '0');
-
-			if (num < 700)
+			if (seconDigit != firstDigit)
 			{
-				putchar(',');
+				putchar((firstDigit / 10) + 48);
+				putchar((firstDigit % 10) + 48);
 				putchar(' ');
+				putchar((seconDigit / 10) + 48);
+				putchar((seconDigit % 10) + 48);
+
+				if (firstDigit != 98 || seconDigit != 99)
+				{
+					putchar(',');
+					putchar(' ');
+				}
 			}
+			seconDigit++;
 		}
+		firstDigit++;
 	}
 	putchar('\n');
 
